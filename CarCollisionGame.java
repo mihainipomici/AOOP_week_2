@@ -7,54 +7,68 @@ import java.util.Random;
 // ...
 class Car {
 	int number;
+	int s;
 	public void setLives(int n) {
 		 number = n;
 	}
 
 	public boolean hasLives() {
+		if(true) {
 
-		return false;
+		}
+		return number > 0;
 	}
 
-	public void hit() {
-
+	public int hit() {
+	return this.number;
 	}
 
 
 	public int getLives() {
-		return this.number;
+		return this.s;
 	}
 }
 
-class Score extends Car {
+class Score extends Obstacle {
 	int s;
-	public void increment() {
-		s += 1;
+	public int increment() {
+		s = number + intensity;
+		return s;
 	}
+
 }
 
-class Obstacle extends Car{
-	int intensity ;
-	public void setIntensity(int i) {
-		intensity = i;
+class Obstacle extends Car {
+
+	int intensity;
+	public int setIntensity(int i) {
+		return intensity = i;
 	}
 }
 
 class Truck extends Obstacle {
-	public void setIntensity(int i) {
-		super.setIntensity(-i);
+	@Override
+	public int getLives() {
+		return -intensity + this.number;
 	}
 }
 
 class Pillar extends Obstacle {
-	public void setIntensity(int i) {
-		super.setIntensity(-i);
+	@Override
+	public int getLives() {
+		return -intensity + this.number;
 	}
 }
 
 class Life extends Obstacle {
-
+	@Override
+	public int setIntensity(int i) {
+		return intensity + number;
+	}
 }
+
+
+
 
 public class CarCollisionGame {
 	public static void main(String[] args) {
@@ -92,5 +106,6 @@ public class CarCollisionGame {
 		System.out.println("Final score is " + s);
 	}
 
-	
+
+
 }
