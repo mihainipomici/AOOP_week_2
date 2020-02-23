@@ -7,7 +7,6 @@ import java.util.Random;
 // ...
 class Car {
 	int number;
-	int s;
 	public void setLives(int n) {
 		 number = n;
 	}
@@ -43,28 +42,31 @@ class Obstacle extends Car {
 
 	int intensity;
 	public void setIntensity(int i) {
+		intensity = i;
 
 	}
 }
 
 class Truck extends Obstacle {
-	@Override
-	public int getLives() {
-		return -intensity + this.number;
+	int lives;
+	public Truck(){
+		lives = this.number - intensity;
+
 	}
+
 }
 
 class Pillar extends Obstacle {
-	@Override
-	public int getLives() {
-		return -intensity + this.number;
+	int lives;
+	public Pillar(){
+		lives = this.number - intensity;
 	}
 }
 
 class Life extends Obstacle {
-	@Override
-	public int getLives() {
-		return intensity + number;
+	int lives;
+	public Life() {
+		lives = this.number + intensity;
 	}
 }
 
