@@ -29,11 +29,11 @@ class Car {
 	}
 }
 
-class Score extends Obstacle {
+class Score extends Car {
 	int s;
-	public int increment() {
-		s = number + intensity;
-		return s;
+	public void increment() {
+		s += 1;
+
 	}
 
 }
