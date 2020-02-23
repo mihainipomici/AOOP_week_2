@@ -13,10 +13,11 @@ class Car {
 	}
 
 	public boolean hasLives() {
-		if(true) {
-
+		if(getLives() != 0) {
+			return true;
+		}else{
+			return false;
 		}
-		return number > 0;
 	}
 
 	public int hit() {
@@ -25,7 +26,7 @@ class Car {
 
 
 	public int getLives() {
-		return this.s;
+		return this.number;
 	}
 }
 
@@ -41,8 +42,8 @@ class Score extends Obstacle {
 class Obstacle extends Car {
 
 	int intensity;
-	public int setIntensity(int i) {
-		return intensity = i;
+	public void setIntensity(int i) {
+
 	}
 }
 
@@ -62,7 +63,7 @@ class Pillar extends Obstacle {
 
 class Life extends Obstacle {
 	@Override
-	public int setIntensity(int i) {
+	public int getLives() {
 		return intensity + number;
 	}
 }
